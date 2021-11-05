@@ -2,7 +2,7 @@
 
 @layer components {
     .actionbutton {
-        @apply bg-gray-200 flex flex-col justify-center flex-1 m-1 h-32 items-center rounded-lg transition active:scale-90 duration-200 ease-in-out cursor-pointer text-xl;
+        @apply bg-gray-200 flex flex-col justify-center flex-1 m-3 h-32 items-center rounded-lg cursor-pointer text-xl transform transition duration-300 hover:scale-105 ease-in-out;
     }
 
     .inputboxes {

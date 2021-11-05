@@ -16,7 +16,7 @@ function ActionItems() {
                 <div className="flex items-center">
                     <div className="mr-4 text-sm">Jitendra Garg</div>
                     <img
-                        src=""
+                        src="https://media-exp1.licdn.com/dms/image/C4D03AQG51oOWe6PPcQ/profile-displayphoto-shrink_800_800/0/1629528762745?e=1641427200&v=beta&t=s_2am7yowtQ0rJ_iCCLiHQehhy3a_Wagy3ZyuCYSDX8"
                         alt="User Image"
                         className="h-12 w-12 rounded-full border border-gray-200 p-px"
                     />
