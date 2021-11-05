@@ -1,0 +1,11 @@
+@tailwind components;
+
+@layer components {
+    .actionbutton {
+        @apply bg-gray-200 flex flex-col justify-center flex-1 m-1 h-32 items-center rounded-lg transition active:scale-90 duration-200 ease-in-out cursor-pointer text-xl;
+    }
+
+    .inputboxes {
+        @apply h-10 bg-gray-200 my-2 rounded p-2 outline-none border-none;
+    }
+}

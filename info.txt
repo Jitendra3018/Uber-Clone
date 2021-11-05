@@ -1,0 +1,5 @@
+Tech stack used -
+1. React JS
+2. Next JS
+3. Tailwind CSS
+4. Mapbox
