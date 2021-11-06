@@ -1,7 +1,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
 
 function search() {
+    const [pickup, setPickup] = useState('')
+    const [dropoff, setDropoff] = useState('')
+
+    // console.log(pickup)
+    // console.log(dropoff)
+
     return (
         <div>
             <Head>
@@ -48,11 +55,15 @@ function search() {
                             placeholder="Enter pickup location"
                             type="text"
                             className="inputboxes"
+                            value={pickup}
+                            onChange={(e) => setPickup(e.target.value)}
                         />
                         <input
                             placeholder="Where to?"
                             type="text"
                             className="inputboxes"
+                            value={dropoff}
+                            onChange={(e) => setDropoff(e.target.value)}
                         />
                     </div>
 
@@ -77,9 +88,16 @@ function search() {
                 </div>
 
                 {/* Confirm Location */}
-                <div className="bg-black text-white text-center mx-2 mt-2 py-2 rounded text-xl cursor-pointer">
-                    Confirm Locations
-                </div>
+                <Link
+                    href={{
+                        pathname: '/confirm',
+                        query: { pickup: pickup, dropoff: dropoff },
+                    }}
+                >
+                    <div className="bg-black text-white text-center mx-2 mt-2 py-2 rounded text-xl cursor-pointer">
+                        Confirm Locations
+                    </div>
+                </Link>
             </div>
         </div>
     )
