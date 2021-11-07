@@ -33,7 +33,7 @@ function Map({ pickupCoordinates, dropoffCoordinates }) {
         const marker1 = new mapboxgl.Marker().setLngLat(coordinates).addTo(map)
     }
 
-    return <div id="map" className="flex-1 h-1/2"></div>
+    return <div id="map" className="flex-1"></div>
 }
 
 export default Map

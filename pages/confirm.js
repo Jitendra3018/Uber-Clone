@@ -2,18 +2,19 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import Map from '../components/Map'
-import RideContainer from '../components/RideContainer'
+// import RideContainer from '../components/RideContainer'
 import Link from 'next/link'
+import RideSelector from '../components/RideSelector'
 
 function confirm() {
     const router = useRouter()
     const { pickup, dropoff } = router.query
 
-    console.log('Pickup ', pickup)
-    console.log('Dropoff ', dropoff)
+    // console.log('Pickup ', pickup)
+    // console.log('Dropoff ', dropoff)
 
-    const [pickupCoordinates, setPickupCoordinates] = useState()
-    const [dropoffCoordinates, setDropoffCoordinates] = useState()
+    const [pickupCoordinates, setPickupCoordinates] = useState([0, 0])
+    const [dropoffCoordinates, setDropoffCoordinates] = useState([0, 0])
 
     const getPickupCoordinates = (pickup) => {
         // const pickup = 'Udaipur'
@@ -30,7 +31,7 @@ function confirm() {
         )
             .then((response) => response.json())
             .then((data) => {
-                console.log('Pickup')
+                // console.log('Pickup')
                 // console.log(data.features[0].center)
                 setPickupCoordinates(data.features[0].center)
             })
@@ -52,7 +53,7 @@ function confirm() {
             .then((response) => response.json())
             .then((data) => {
                 // console.log(data)
-                console.log('Dropoff')
+                // console.log('Dropoff')
                 // console.log(data.features[0].center)
                 setDropoffCoordinates(data.features[0].center)
             })
@@ -66,10 +67,12 @@ function confirm() {
     return (
         <div>
             <Head>
-                <title>Confirm</title>
+                <title>
+                    Uber | {pickup} to {dropoff}
+                </title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className="flex flex-col h-screen">
+            <div className="flex flex-col h-screen mr-auto">
                 <div className="absolute top-2 z-50">
                     <Link href="/search">
                         <img
@@ -83,7 +86,18 @@ function confirm() {
                     pickupCoordinates={pickupCoordinates}
                     dropoffCoordinates={dropoffCoordinates}
                 />
-                <RideContainer />
+                <div className="flex flex-col flex-1 h-1/2">
+                    {/* Ride Selector */}
+                    <RideSelector
+                        pickupCoordinates={pickupCoordinates}
+                        dropoffCoordinates={dropoffCoordinates}
+                    />
+
+                    {/* Confirm Button */}
+                    <div className="bg-black text-white text-center py-4 m-4 text-lg border-t-2 cursor-pointer rounded-lg">
+                        Confirm Uber X
+                    </div>
+                </div>
             </div>
         </div>
     )

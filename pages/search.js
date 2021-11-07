@@ -12,7 +12,7 @@ function search() {
     return (
         <div>
             <Head>
-                <title>Location Search</title>
+                <title>Uber | Search</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
@@ -54,14 +54,14 @@ function search() {
                         <input
                             placeholder="Enter pickup location"
                             type="text"
-                            className="inputboxes"
+                            className="h-10 bg-gray-200 my-2 rounded p-2 outline-none border-none;"
                             value={pickup}
                             onChange={(e) => setPickup(e.target.value)}
                         />
                         <input
                             placeholder="Where to?"
                             type="text"
-                            className="inputboxes"
+                            className="h-10 bg-gray-200 my-2 rounded p-2 outline-none border-none;"
                             value={dropoff}
                             onChange={(e) => setDropoff(e.target.value)}
                         />

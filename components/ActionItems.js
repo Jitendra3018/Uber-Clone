@@ -1,6 +1,27 @@
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { auth } from '../firebase'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { useRouter } from 'next/router'
 
 function ActionItems() {
+    const [user, setUser] = useState(null)
+    const router = useRouter()
+
+    useEffect(() => {
+        return onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser({
+                    name: user.displayName,
+                    photoURL: user.photoURL,
+                })
+            } else {
+                setUser(null)
+                router.push('/login')
+            }
+        })
+    }, [])
+
     return (
         <div className="flex-1 p-4">
             {/* Header */}
@@ -14,11 +35,14 @@ function ActionItems() {
 
                 {/* Profile */}
                 <div className="flex items-center">
-                    <div className="mr-4 text-sm">Jitendra Garg</div>
+                    <div className="mr-4 text-sm capitalize">
+                        {user && user.name}
+                    </div>
                     <img
-                        src="https://media-exp1.licdn.com/dms/image/C4D03AQG51oOWe6PPcQ/profile-displayphoto-shrink_800_800/0/1629528762745?e=1641427200&v=beta&t=s_2am7yowtQ0rJ_iCCLiHQehhy3a_Wagy3ZyuCYSDX8"
+                        src={user && user.photoURL}
                         alt="User Image"
-                        className="h-12 w-12 rounded-full border border-gray-200 p-px"
+                        className="h-12 w-12 rounded-full border border-gray-200 p-px cursor-pointer transition transform hover:scale-110 duration-300 ease-in-out"
+                        onClick={() => signOut(auth)}
                     />
                 </div>
             </div>
@@ -27,7 +51,7 @@ function ActionItems() {
             <div className="flex">
                 {/* Action Button */}
                 <Link href="/search">
-                    <div className="actionbutton">
+                    <div className="bg-gray-200 flex flex-col justify-center flex-1 m-3 h-32 items-center rounded-lg cursor-pointer text-xl transform transition duration-300 hover:scale-105 ease-in-out;">
                         <img
                             src="https://i.ibb.co/cyvcpfF/uberx.png"
                             alt=""
@@ -36,7 +60,7 @@ function ActionItems() {
                         Ride
                     </div>
                 </Link>
-                <div className="actionbutton">
+                <div className="bg-gray-200 flex flex-col justify-center flex-1 m-3 h-32 items-center rounded-lg text-xl transform transition duration-300 hover:scale-105 ease-in-out;">
                     <img
                         src="https://i.ibb.co/n776JLm/bike.png"
                         alt=""
@@ -44,7 +68,7 @@ function ActionItems() {
                     />
                     2-wheels
                 </div>
-                <div className="actionbutton">
+                <div className="bg-gray-200 flex flex-col justify-center flex-1 m-3 h-32 items-center rounded-lg text-xl transform transition duration-300 hover:scale-105 ease-in-out;">
                     <img
                         src="https://i.ibb.co/5RjchBg/uberschedule.png"
                         alt=""

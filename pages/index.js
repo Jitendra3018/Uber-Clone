@@ -6,7 +6,7 @@ export default function Home() {
     return (
         <div>
             <Head>
-                <title>Uber Clone</title>
+                <title>Uber | Home</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
