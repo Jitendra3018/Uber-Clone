@@ -19,7 +19,7 @@ function search() {
             <div className="bg-gray-200 h-screen">
                 {/* Button Container */}
                 <div className="bg-white px-4">
-                    <Link href="/">
+                    <Link href="/home">
                         <img
                             src="https://img.icons8.com/ios-filled/50/000000/left.png"
                             alt="Back Button"

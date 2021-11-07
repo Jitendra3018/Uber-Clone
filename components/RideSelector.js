@@ -24,7 +24,7 @@ function RideSelector({ pickupCoordinates, dropoffCoordinates }) {
     }, [pickupCoordinates, dropoffCoordinates])
 
     return (
-        <div className="flex-1 overflow-y-scroll flex flex-col">
+        <div className="flex-1 overflow-y-hidden flex flex-col">
             {/* Title */}
             <div className="text-gray-500 text-center text-xs py-2 border-b">
                 Choose a ride or swipe up for more

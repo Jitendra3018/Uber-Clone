@@ -17,7 +17,7 @@ function ActionItems() {
                 })
             } else {
                 setUser(null)
-                router.push('/login')
+                router.push('/')
             }
         })
     }, [])
